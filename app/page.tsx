@@ -100,6 +100,32 @@ export default function Home() {
             Maintenez n'importe quel bouton pour commencer
           </p>
         </footer>
+
+        {/* Bouton rond pour mobile */}
+        <div className={styles.mobileButtonContainer}>
+          <button
+            className={`${styles.mobileButton} ${isHolding ? styles.mobileButtonActive : ''}`}
+            onTouchStart={(e) => {
+              e.preventDefault();
+              handleHoldStart();
+            }}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              handleRelease();
+            }}
+            onMouseDown={handleHoldStart}
+            onMouseUp={handleRelease}
+            aria-label="Bouton de démarrage/relâchement"
+          >
+            {gameState === 'idle' || gameState === 'result' || gameState === 'falseStart' ? (
+              <span className={styles.mobileButtonText}>MAINTENIR</span>
+            ) : gameState === 'go' ? (
+              <span className={styles.mobileButtonText}>RELÂCHER!</span>
+            ) : (
+              <span className={styles.mobileButtonText}>TENIR...</span>
+            )}
+          </button>
+        </div>
       </div>
 
       {showHistory && (

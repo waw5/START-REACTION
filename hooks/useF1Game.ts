@@ -20,14 +20,12 @@ export const useF1Game = (config: GameConfig = DEFAULT_CONFIG) => {
 
   // Démarrer le jeu
   const startGame = useCallback(() => {
-    console.log('🚀 startGame() appelé');
     clearAllTimeouts();
     setLightsOn(0);
     setReactionTime(null);
     // NE PAS réinitialiser isHolding ici car l'utilisateur maintient toujours!
     clickedBeforeGoRef.current = false;
     setGameState('lighting');
-    console.log('✅ État changé en "lighting"');
     
     let currentLight = 0;
     
@@ -36,7 +34,6 @@ export const useF1Game = (config: GameConfig = DEFAULT_CONFIG) => {
       if (currentLight < config.totalLights) {
         currentLight++;
         setLightsOn(currentLight);
-        console.log('💡 Feu allumé:', currentLight);
         
         const delay = Math.random() * (config.maxLightInterval - config.minLightInterval) + config.minLightInterval;
         const timeout = setTimeout(lightUpSequence, delay);
@@ -44,7 +41,6 @@ export const useF1Game = (config: GameConfig = DEFAULT_CONFIG) => {
       } else {
         // Tous les feux sont allumés, attendre un délai aléatoire
         setGameState('waiting');
-        console.log('⏳ État changé en "waiting"');
         
         const randomDelay = Math.random() * (config.maxRandomDelay - config.minRandomDelay) + config.minRandomDelay;
         
@@ -53,7 +49,6 @@ export const useF1Game = (config: GameConfig = DEFAULT_CONFIG) => {
             setGameState('go');
             setLightsOn(0);
             startTimeRef.current = performance.now();
-            console.log('🏁 État changé en "go"');
           }
         }, randomDelay);
         
@@ -66,28 +61,23 @@ export const useF1Game = (config: GameConfig = DEFAULT_CONFIG) => {
 
   // Gérer le maintien (mousedown/keydown)
   const handleHoldStart = useCallback(() => {
-    console.log('🔵 handleHoldStart appelé - gameState:', gameState, 'isHolding:', isHolding);
-    
     if (gameState === 'idle' || gameState === 'result' || gameState === 'falseStart') {
-      console.log('🟢 État valide pour démarrer, setIsHolding(true)');
       // Marquer qu'on maintient
       setIsHolding(true);
       
       // Démarrer le jeu après un court délai (vérifier qu'on maintient vraiment)
       const holdCheckTimeout = setTimeout(() => {
-        console.log('⏰ Timeout atteint, appel de startGame()');
         startGame();
-      }, 100); // 100ms pour vérifier qu'on maintient vraiment
+      }, 150); // 150ms pour vérifier qu'on maintient vraiment
       
       timeoutsRef.current.push(holdCheckTimeout);
       return;
     }
     
     if (gameState === 'lighting' || gameState === 'waiting' || gameState === 'go') {
-      console.log('🟡 État en jeu, setIsHolding(true)');
       setIsHolding(true);
     }
-  }, [gameState, startGame, isHolding]);
+  }, [gameState, startGame]);
 
   // Gérer le relâchement (mouseup/keyup)
   const handleRelease = useCallback(() => {

@@ -553,9 +553,111 @@
   color: #999;
 }
 
+/* ========== BOUTON MOBILE ROND ========== */
+
+.mobileButtonContainer {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.mobileButton {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #e10600;
+  background: radial-gradient(circle at 30% 30%, #ff0000, #cc0000, #990000);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 8px 30px rgba(255, 0, 0, 0.5),
+    inset 0 4px 15px rgba(255, 255, 255, 0.2),
+    inset 0 -4px 15px rgba(0, 0, 0, 0.5);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobileButton:active,
+.mobileButtonActive {
+  transform: scale(0.95);
+  background: radial-gradient(circle at 30% 30%, #ff3333, #ff0000, #cc0000);
+  box-shadow: 
+    0 4px 20px rgba(255, 0, 0, 0.8),
+    inset 0 2px 10px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.mobileButtonText {
+  display: block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Afficher le bouton sur mobile uniquement */
+@media (max-width: 768px) {
+  .mobileButtonContainer {
+    display: block;
+  }
+  
+  .instructions {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobileButton {
+    width: 110px;
+    height: 110px;
+    font-size: 0.95rem;
+    border-width: 3px;
+  }
+  
+  .mobileButtonContainer {
+    bottom: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileButton {
+    width: 100px;
+    height: 100px;
+    font-size: 0.9rem;
+  }
+  
+  .mobileButtonContainer {
+    bottom: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobileButton {
+    width: 90px;
+    height: 90px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+  
+  .mobileButtonContainer {
+    bottom: 25px;
+  }
+}
+
 /* ========== RESPONSIVE COMPLET ========== */
 
 @media (max-width: 768px) {
+  .gameArea {
+    padding: 15px 10px;
+  }
+  
   .welcomePopup {
     padding: 40px 30px;
     max-width: 94%;
@@ -628,8 +730,20 @@
     font-size: 0.85rem;
   }
   
-  .instructions {
-    font-size: 0.9rem;
+  .footer p:first-child {
+    font-size: 0.8rem;
+  }
+  
+  .trafficLightsContainer {
+    margin: 20px 0;
+  }
+  
+  .carUnderLights {
+    margin-top: -40px;
+  }
+  
+  .gameContent {
+    margin-top: 20px;
   }
 }
 
@@ -712,6 +826,10 @@
 }
 
 @media (max-width: 480px) {
+  .gameArea {
+    padding: 12px 8px;
+  }
+  
   .welcomePopup {
     padding: 30px 20px;
     max-width: 94%;
@@ -789,18 +907,31 @@
   .footer {
     padding: 12px 8px;
     font-size: 0.75rem;
+    margin-bottom: 140px;
   }
   
-  .instructions {
-    font-size: 0.8rem;
+  .footer p:first-child {
+    font-size: 0.7rem;
+  }
+  
+  .trafficLightsContainer {
+    margin: 15px 0;
   }
   
   .carUnderLights {
-    margin-top: -30px;
+    margin-top: -35px;
+  }
+  
+  .gameContent {
+    margin-top: 15px;
   }
 }
 
 @media (max-width: 360px) {
+  .gameArea {
+    padding: 10px 6px;
+  }
+  
   .welcomePopup {
     padding: 25px 18px;
     max-width: 95%;
@@ -867,8 +998,12 @@
     font-size: 0.75rem;
   }
   
+  .footer {
+    margin-bottom: 130px;
+  }
+  
   .carUnderLights {
-    margin-top: -25px;
+    margin-top: -30px;
   }
 }
 
