@@ -63,7 +63,8 @@ export default function Home() {
           </h1>
         </header>
 
-        {(gameState === 'lighting' || gameState === 'waiting' || gameState === 'go' || gameState === 'result' || gameState === 'falseStart') && (
+        {/* Affichage du jeu - TOUJOURS visible */}
+        {(gameState === 'idle' || gameState === 'lighting' || gameState === 'waiting' || gameState === 'go' || gameState === 'result' || gameState === 'falseStart') && (
           <>
             <TrafficLights 
               totalLights={5} 
