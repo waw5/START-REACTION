@@ -30,7 +30,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
           subtitle: 'Maintenez n\'importe quel bouton pour commencer',
           showButton: false,
           buttonText: '',
-          showRules: true,
+          showRules: false,
         };
       case 'lighting':
         return {
