@@ -1,0 +1,920 @@
+/* ========== POPUP D'ACCUEIL (OVERLAY) ========== */
+.welcomeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.welcomePopup {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 26, 0.98) 0%,
+    rgba(20, 20, 30, 0.98) 100%
+  );
+  border: 3px solid rgba(225, 6, 0, 0.5);
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: center;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 100px rgba(225, 6, 0, 0.3);
+  animation: popupSlide 0.4s ease;
+}
+
+@keyframes popupSlide {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popupTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.popupStart {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #e10600 0%, #c10500 100%);
+  color: white;
+  padding: 12px 40px;
+  border-radius: 12px;
+  letter-spacing: 8px;
+  box-shadow: 
+    0 8px 30px rgba(225, 6, 0, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.popupStart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shine 3s infinite;
+}
+
+.popupReaction {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 5px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.popupMainText {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.popupInstruction {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.popupRules {
+  margin: 30px 0;
+  padding: 25px;
+  background: rgba(225, 6, 0, 0.08);
+  border: 2px solid rgba(225, 6, 0, 0.3);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.popupRulesTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e10600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.popupRulesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popupRulesList li {
+  padding: 10px 0;
+  padding-left: 28px;
+  position: relative;
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.popupRulesList li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #e10600;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.popupButtons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.popupButton {
+  background: linear-gradient(135deg, #e10600 0%, #c10500 100%);
+  color: white;
+  border: none;
+  padding: 16px 45px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 25px rgba(225, 6, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.popupButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.popupButton:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 35px rgba(225, 6, 0, 0.7);
+  background: linear-gradient(135deg, #ff0700 0%, #e10600 100%);
+}
+
+.popupButton:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.popupButton:active {
+  transform: translateY(0) scale(1);
+}
+
+.popupButtonSecondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.popupButtonSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.popupButtonSecondary:active {
+  transform: translateY(0);
+}
+
+/* ========== PAGE D'ACCUEIL ========== */
+.welcomeScreen {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.welcomeContent {
+  text-align: center;
+  max-width: 600px;
+}
+
+.welcomeTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.welcomeStart {
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #e10600 0%, #c10500 100%);
+  color: white;
+  padding: 15px 50px;
+  border-radius: 15px;
+  letter-spacing: 8px;
+  box-shadow: 
+    0 8px 30px rgba(225, 6, 0, 0.6),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcomeStart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shine 3s infinite;
+}
+
+.welcomeReaction {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 6px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.welcomeSubtitle {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+.startButton {
+  background: linear-gradient(135deg, #e10600 0%, #c10500 100%);
+  color: white;
+  border: none;
+  padding: 20px 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 25px rgba(225, 6, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.startButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.startButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 35px rgba(225, 6, 0, 0.7);
+  background: linear-gradient(135deg, #ff0700 0%, #e10600 100%);
+}
+
+.startButton:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.startButton:active {
+  transform: translateY(0) scale(1);
+}
+
+/* ========== ÉCRAN DE JEU ========== */
+.main {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(225, 6, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(225, 6, 0, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, 
+      rgba(10, 10, 10, 0.95) 0%, 
+      rgba(26, 26, 26, 0.9) 50%, 
+      rgba(10, 10, 10, 0.95) 100%
+    );
+  z-index: 0;
+  animation: bgPulse 10s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+}
+
+.grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(225, 6, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(225, 6, 0, 0.08) 1px, transparent 1px),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 50px,
+      rgba(255, 255, 255, 0.02) 50px,
+      rgba(255, 255, 255, 0.02) 51px
+    );
+  background-size: 50px 50px, 50px 50px, 100px 100px;
+  animation: gridMove 20s linear infinite, gridGlow 5s ease-in-out infinite;
+}
+
+@keyframes gridGlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+
+.gameArea {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+/* F1 juste en dessous des feux rouges - CENTRÉE ET RESPONSIVE */
+.carUnderLights {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
+  z-index: 50;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .carUnderLights {
+    margin-top: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carUnderLights {
+    margin-top: -30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .carUnderLights {
+    margin-top: -25px;
+  }
+}
+
+/* Animation de la voiture en ARRIÈRE-PLAN pour résultats */
+.carBackground {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Contenu du jeu AU PREMIER PLAN */
+.gameContent {
+  position: relative;
+  z-index: 100;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gameArea.clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gameArea.clickable:hover {
+  transform: scale(1.002);
+}
+
+.gameArea.clickable:active,
+.gameArea.holding {
+  transform: scale(0.998);
+  box-shadow: inset 0 0 80px rgba(0, 255, 0, 0.3);
+  background: radial-gradient(circle at center, rgba(0, 255, 0, 0.05) 0%, transparent 70%);
+}
+
+.header {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logoF1 {
+  background: linear-gradient(135deg, #e10600 0%, #c10500 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  box-shadow: 
+    0 4px 15px rgba(225, 6, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.logoF1::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+.logoText {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 30px 20px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 8px 0;
+}
+
+.instructions {
+  font-size: 1rem;
+  color: #999;
+}
+
+/* ========== RESPONSIVE COMPLET ========== */
+
+@media (max-width: 768px) {
+  .welcomePopup {
+    padding: 40px 30px;
+    max-width: 94%;
+  }
+  
+  .popupStart {
+    font-size: 3.2rem;
+    padding: 10px 32px;
+    letter-spacing: 6px;
+  }
+  
+  .popupReaction {
+    font-size: 2rem;
+    letter-spacing: 4px;
+  }
+  
+  .popupMainText {
+    font-size: 1.3rem;
+  }
+  
+  .popupInstruction {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  .popupRules {
+    padding: 20px;
+    margin: 25px 0;
+  }
+  
+  .popupRulesTitle {
+    font-size: 1.1rem;
+  }
+  
+  .popupRulesList li {
+    font-size: 0.95rem;
+    padding: 9px 0;
+    padding-left: 26px;
+  }
+  
+  .popupButton {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+  }
+  
+  .popupButtonSecondary {
+    padding: 13px 32px;
+    font-size: 1.05rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .logoF1 {
+    padding: 6px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .logoText {
+    font-size: 0.95rem;
+  }
+  
+  .header {
+    padding: 15px 10px;
+  }
+  
+  .footer {
+    padding: 15px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .instructions {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcomePopup {
+    padding: 35px 25px;
+    max-width: 92%;
+  }
+  
+  .popupStart {
+    font-size: 2.8rem;
+    padding: 10px 28px;
+    letter-spacing: 5px;
+  }
+  
+  .popupReaction {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+  }
+  
+  .popupMainText {
+    font-size: 1.2rem;
+  }
+  
+  .popupInstruction {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+  
+  .popupRules {
+    padding: 18px;
+    margin: 20px 0;
+  }
+  
+  .popupRulesTitle {
+    font-size: 1.05rem;
+  }
+  
+  .popupRulesList li {
+    font-size: 0.9rem;
+    padding: 8px 0;
+    padding-left: 24px;
+  }
+  
+  .popupButton {
+    padding: 14px 35px;
+    font-size: 1.1rem;
+  }
+  
+  .popupButtonSecondary {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+  
+  .popupButtons {
+    gap: 12px;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+    gap: 6px;
+  }
+  
+  .logoF1 {
+    padding: 5px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .logoText {
+    font-size: 0.85rem;
+  }
+  
+  .footer {
+    font-size: 0.8rem;
+  }
+  
+  .instructions {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcomePopup {
+    padding: 30px 20px;
+    max-width: 94%;
+  }
+  
+  .popupStart {
+    font-size: 2.4rem;
+    padding: 8px 24px;
+    letter-spacing: 4px;
+  }
+  
+  .popupReaction {
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+  }
+  
+  .popupMainText {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .popupInstruction {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+  
+  .popupRules {
+    padding: 16px;
+    margin: 18px 0;
+  }
+  
+  .popupRulesTitle {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+  
+  .popupRulesList li {
+    font-size: 0.85rem;
+    padding: 7px 0;
+    padding-left: 22px;
+  }
+  
+  .popupRulesList li::before {
+    font-size: 1.1rem;
+  }
+  
+  .popupButton {
+    padding: 13px 32px;
+    font-size: 1.05rem;
+  }
+  
+  .popupButtonSecondary {
+    padding: 11px 26px;
+    font-size: 0.95rem;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .logoF1 {
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .logoText {
+    font-size: 0.8rem;
+  }
+  
+  .header {
+    padding: 12px 8px;
+  }
+  
+  .footer {
+    padding: 12px 8px;
+    font-size: 0.75rem;
+  }
+  
+  .instructions {
+    font-size: 0.8rem;
+  }
+  
+  .carUnderLights {
+    margin-top: -30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .welcomePopup {
+    padding: 25px 18px;
+    max-width: 95%;
+  }
+  
+  .popupStart {
+    font-size: 2rem;
+    padding: 7px 20px;
+    letter-spacing: 3px;
+  }
+  
+  .popupReaction {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+  
+  .popupMainText {
+    font-size: 1rem;
+  }
+  
+  .popupInstruction {
+    font-size: 0.85rem;
+  }
+  
+  .popupRules {
+    padding: 14px;
+  }
+  
+  .popupRulesTitle {
+    font-size: 0.95rem;
+  }
+  
+  .popupRulesList li {
+    font-size: 0.8rem;
+    padding: 6px 0;
+    padding-left: 20px;
+  }
+  
+  .popupButton {
+    padding: 12px 28px;
+    font-size: 1rem;
+  }
+  
+  .popupButtonSecondary {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+  
+  .popupButtons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .logo {
+    font-size: 1rem;
+  }
+  
+  .logoF1 {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .logoText {
+    font-size: 0.75rem;
+  }
+  
+  .carUnderLights {
+    margin-top: -25px;
+  }
+}
+
+@media (max-width: 320px) {
+  .popupStart {
+    font-size: 1.8rem;
+    padding: 6px 18px;
+  }
+  
+  .popupReaction {
+    font-size: 1.2rem;
+  }
+  
+  .popupButton {
+    padding: 11px 24px;
+    font-size: 0.95rem;
+  }
+  
+  .popupButtonSecondary {
+    padding: 9px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-height: 700px) and (orientation: landscape) {
+  .welcomePopup {
+    max-height: 85vh;
+    padding: 25px 30px;
+  }
+  
+  .popupStart {
+    font-size: 2.5rem;
+    padding: 8px 25px;
+  }
+  
+  .popupReaction {
+    font-size: 1.5rem;
+  }
+  
+  .popupRules {
+    margin: 15px 0;
+    padding: 15px;
+  }
+  
+  .popupRulesList li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,361 @@
+.container {
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.messageBox {
+  background: rgba(26, 26, 26, 0.9);
+  border: 3px solid #333;
+  border-radius: 16px;
+  padding: 40px;
+  margin: 30px 0;
+  transition: all 0.3s ease;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.messageBox.go {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  animation: goFlash 0.5s ease-in-out infinite;
+}
+
+.messageBox.success {
+  background: rgba(0, 255, 0, 0.15);
+  border-color: #00ff00;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.messageBox.error {
+  background: rgba(255, 0, 0, 0.15);
+  border-color: #ff0000;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+}
+
+@keyframes goFlash {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.8);
+  }
+}
+
+.title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin: 0;
+  color: #fff;
+  text-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.6),
+    0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.go .title {
+  color: #00ff00;
+  animation: pulse 0.3s ease-in-out infinite;
+}
+
+.success .title {
+  color: #00ff00;
+  text-shadow: 
+    0 0 40px rgba(0, 255, 0, 0.8),
+    0 0 60px rgba(0, 255, 0, 0.5),
+    0 4px 15px rgba(0, 0, 0, 0.9);
+  font-size: 5rem;
+}
+
+.error .title {
+  color: #ff0000;
+  text-shadow: 
+    0 0 40px rgba(255, 0, 0, 0.8),
+    0 0 60px rgba(255, 0, 0, 0.5),
+    0 4px 15px rgba(0, 0, 0, 0.9);
+  font-size: 3rem;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.subtitle {
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.success .subtitle {
+  color: #66ff66;
+  font-weight: 600;
+}
+
+.error .subtitle {
+  color: #ff6666;
+  font-weight: 600;
+}
+
+.rulesBox {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(225, 6, 0, 0.1);
+  border: 2px solid rgba(225, 6, 0, 0.3);
+  border-radius: 12px;
+  text-align: left;
+  max-width: 500px;
+}
+
+.rulesTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e10600;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.rulesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rulesList li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.rulesList li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #e10600;
+  font-weight: bold;
+}
+
+
+.button {
+  background: linear-gradient(135deg, #e10600 0%, #c10500 100%);
+  color: white;
+  border: none;
+  padding: 16px 48px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(225, 6, 0, 0.4);
+  min-width: 200px;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225, 6, 0, 0.6);
+  background: linear-gradient(135deg, #ff0700 0%, #e10600 100%);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.buttonSecondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.buttonSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(26, 26, 26, 0.6);
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statValue {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hint {
+  margin-top: 30px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+.focusHint {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #999;
+  font-size: 0.9rem;
+  z-index: 1000;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .button {
+    padding: 12px 32px;
+    font-size: 1rem;
+    min-width: 140px;
+  }
+  
+  .buttonSecondary {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+  
+  .messageBox {
+    padding: 25px 15px;
+    min-height: 140px;
+    margin: 20px 10px;
+  }
+  
+  .stats {
+    gap: 15px;
+    padding: 15px;
+    margin-top: 30px;
+  }
+  
+  .statValue {
+    font-size: 1.3rem;
+  }
+  
+  .statLabel {
+    font-size: 0.8rem;
+  }
+  
+  .rulesBox {
+    padding: 15px;
+    margin: 15px 0;
+  }
+  
+  .rulesTitle {
+    font-size: 1rem;
+  }
+  
+  .rulesList li {
+    font-size: 0.85rem;
+    padding: 6px 0;
+    padding-left: 20px;
+  }
+  
+  .hint {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+  
+  .focusHint {
+    bottom: 20px;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+  }
+  
+  .success .title {
+    font-size: 3.5rem;
+  }
+  
+  .error .title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .button {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+  
+  .messageBox {
+    padding: 20px 12px;
+    min-height: 120px;
+    margin: 15px 5px;
+  }
+  
+  .success .title {
+    font-size: 2.8rem;
+  }
+  
+  .error .title {
+    font-size: 1.8rem;
+  }
+  
+  .focusHint {
+    bottom: 15px;
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
+}
