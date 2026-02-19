@@ -104,9 +104,9 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Game Screen - Visible en idle et résultats */}
+        {/* Game Screen - Visible seulement pour les résultats */}
         <div className={styles.gameContent}>
-          {(gameState === 'idle' || gameState === 'result' || gameState === 'falseStart') && (
+          {(gameState === 'result' || gameState === 'falseStart') && (
             <GameScreen
               gameState={gameState}
               reactionTime={reactionTime}
