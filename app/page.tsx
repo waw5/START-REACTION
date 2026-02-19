@@ -78,30 +78,7 @@ export default function Home() {
           </>
         )}
 
-        {/* Game Screen - Visible en idle et résultats */}
-        <div className={styles.gameContent}>
-          {(gameState === 'idle' || gameState === 'result' || gameState === 'falseStart') && (
-            <GameScreen
-              gameState={gameState}
-              reactionTime={reactionTime}
-              onStart={startGame}
-              showHistory={() => setShowHistory(true)}
-              bestScore={bestScore}
-              averageScore={averageScore}
-              totalAttempts={totalAttempts}
-              lightsOn={lightsOn}
-            />
-          )}
-        </div>
-
-        <footer className={styles.footer}>
-          <p>Inspiré par les départs de Formule 1</p>
-          <p className={styles.instructions}>
-            Maintenez n'importe quel bouton pour commencer
-          </p>
-        </footer>
-
-        {/* Bouton rond pour mobile */}
+        {/* Bouton rond pour mobile - TOUJOURS visible */}
         <div className={styles.mobileButtonContainer}>
           <button
             className={`${styles.mobileButton} ${isHolding ? styles.mobileButtonActive : ''}`}
@@ -126,6 +103,29 @@ export default function Home() {
             )}
           </button>
         </div>
+
+        {/* Game Screen - Visible en idle et résultats */}
+        <div className={styles.gameContent}>
+          {(gameState === 'idle' || gameState === 'result' || gameState === 'falseStart') && (
+            <GameScreen
+              gameState={gameState}
+              reactionTime={reactionTime}
+              onStart={startGame}
+              showHistory={() => setShowHistory(true)}
+              bestScore={bestScore}
+              averageScore={averageScore}
+              totalAttempts={totalAttempts}
+              lightsOn={lightsOn}
+            />
+          )}
+        </div>
+
+        <footer className={styles.footer}>
+          <p>Inspiré par les départs de Formule 1</p>
+          <p className={styles.instructions}>
+            Maintenez n'importe quel bouton pour commencer
+          </p>
+        </footer>
       </div>
 
       {showHistory && (
