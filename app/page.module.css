@@ -568,7 +568,7 @@
 /* ========== BOUTON MOBILE ROND ========== */
 
 .mobileButtonContainer {
-  display: none;
+  display: block;
   position: relative;
   width: 100%;
   margin-top: 30px;
@@ -616,12 +616,8 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Afficher le bouton sur mobile uniquement */
+/* Afficher le bouton sur tous les écrans */
 @media (max-width: 768px) {
-  .mobileButtonContainer {
-    display: block;
-  }
-  
   .instructions {
     display: none;
   }
